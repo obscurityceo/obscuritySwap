@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/obscuritySwap/static/css/main.b86b4f87.chunk.css",
+    "main.js": "/obscuritySwap/static/js/main.39a01ced.chunk.js",
+    "main.js.map": "/obscuritySwap/static/js/main.39a01ced.chunk.js.map",
+    "runtime-main.js": "/obscuritySwap/static/js/runtime-main.501c2bcf.js",
+    "runtime-main.js.map": "/obscuritySwap/static/js/runtime-main.501c2bcf.js.map",
+    "static/js/2.155299f3.chunk.js": "/obscuritySwap/static/js/2.155299f3.chunk.js",
+    "static/js/2.155299f3.chunk.js.map": "/obscuritySwap/static/js/2.155299f3.chunk.js.map",
+    "index.html": "/obscuritySwap/index.html",
+    "static/css/main.b86b4f87.chunk.css.map": "/obscuritySwap/static/css/main.b86b4f87.chunk.css.map",
+    "static/js/2.155299f3.chunk.js.LICENSE.txt": "/obscuritySwap/static/js/2.155299f3.chunk.js.LICENSE.txt",
+    "static/media/file.03d0cbff.mp4": "/obscuritySwap/static/media/file.03d0cbff.mp4"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.501c2bcf.js",
+    "static/js/2.155299f3.chunk.js",
+    "static/css/main.b86b4f87.chunk.css",
+    "static/js/main.39a01ced.chunk.js"
+  ]
+}
