@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "http://obscuritytokenswap.io/",
+  "homepage": "https://obscurityceo.github.io/obscuritySwap/",
   "private": true,
   "dependencies": {
     "@metamask/onboarding": "^1.0.1",
