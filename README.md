@@ -1,2 +1,2 @@
-# obscurityTokenSwap part of the obscurityDAO ecosystme
+# obscurityTokenSwap part of the obscurityDAO ecosystem
 
