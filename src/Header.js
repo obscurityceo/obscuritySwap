@@ -17,7 +17,7 @@ const HeaderLink = ({ page, selected }) => {
 
 const Header = () => {
   const page = useParams().page
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   return (
     <div className='header'>
       <HeaderLink page='Home' selected={page === 'Home'} />
