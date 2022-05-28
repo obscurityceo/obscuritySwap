@@ -18,6 +18,10 @@ export class SendTokensForm extends React.Component {
     console.log('Send Tokens')
     this.props.submitSend()
     event.preventDefault()
+    this.setState({
+      _sendTo: '0x0',
+      _sendAmount: 1
+    })
   }
 
   handleSendTo (event) {

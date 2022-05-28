@@ -126,7 +126,6 @@ export class BuyTokens extends React.Component {
       return
     }
     window.alert('Sent Buy')
-    window.location.reload()
   }
 
   async submitSend () {
@@ -153,7 +152,6 @@ export class BuyTokens extends React.Component {
       return
     }
     window.alert('Sent Transfer')
-    window.location.reload()
   }
 
   aHandleAmount (event) {
