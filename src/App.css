@@ -146,7 +146,7 @@ ul#coreValuesUL li#coreValuesIL {
 }
 
 
-@media only screen and (max-width:  1024px) {
+@media only screen and (max-width:  414px) {
     .App {
      text-align: center;
      color: #FAFAFA;
@@ -155,14 +155,14 @@ ul#coreValuesUL li#coreValuesIL {
 .video {
     background-color: rgba(0, 0, 0, 5);
     filter: brightness(80%);
-    position: 'absolute';
+    position: 'flex';
     left: '0';
     top: '0';
-    height: '100%';
+    height: 'auto';
     objectFit: 'cover';
     transform: 'translate(-50%,';
     zIndex: -1;
-    width: '100%';
+    width: 'auto';
     filter: 'brightness(40%)';
 }
 
@@ -179,25 +179,27 @@ html, body {
     display: flex;
     padding-left: 50px;
     text-align: center;
-    max-width: 1024px;
+    max-width: 414px;
     min-width: 320px;
+    max-height:  896px;
+    background-color: rgba(0, 0, 0, 5);
+    filter: brightness(80%);
 }
 
 .buyTokens {
-    padding-left: 400px;
+
     float: center;
 }
 .right {
     float: right;
 }
 .center {
-    padding-left: 200px;
+
     float: center;
 }
 
 .left {
     float: left;
-    padding-right: 100px;
 }
 
 #navigation {
