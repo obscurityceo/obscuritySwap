@@ -11,6 +11,14 @@ import { Home } from './Pages/Home.jsx'
 import { BuyTokens } from './Pages/BuyTokens.jsx'
 import { ComingSoon } from './Pages/ComingSoon.jsx'
 import backgroundVideo from './file.mp4'
+// import { useMediaQuery } from 'react-responsive'
+
+// import { desktop } from './components/desktop.jsx'
+
+/* const isDesktop = useMediaQuery({
+  query: 'min-device-width: 1200px'
+}) */
+
 class App extends React.Component {
   constructor () {
     super()
@@ -20,6 +28,19 @@ class App extends React.Component {
     }
     this.onConnected = this.onConnected.bind(this)
     this.getProvider = this.getProvider.bind(this)
+
+    /*  const isMobileDevice = useMediaQuery({
+       query: 'min-device-width: 480px'
+    })
+
+    const isTabletDevice = useMediaQuery({
+      query: 'min-device-width: 768px'
+    })
+
+    const isLaptop = useMediaQuery({
+      query: 'min-device-width: 1024px'
+    })
+    */
   }
 
   getProvider () {
@@ -40,7 +61,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="App">
+      <div className="desktop">
         <div id='belowHeader'>
           <OnboardingButton onConnected={this.onConnected}/>
         </div>

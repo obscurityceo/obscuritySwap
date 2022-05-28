@@ -16,10 +16,10 @@ export class BuyTokensForm extends React.Component {
 
   handleBuy (event) {
     console.log('Buy Tokens')
-    let addr, am = this.props.submitBuy()
+    this.props.submitBuy()
     this.setState({
       _to: '0x0',
-      _amount: 1 
+      _amount: 1
     })
     event.preventDefault()
   }
