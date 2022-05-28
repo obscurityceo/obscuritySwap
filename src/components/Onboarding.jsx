@@ -54,7 +54,10 @@ export class OnboardingButton extends React.Component {
   componentDidMount () {
     if (MetaMaskOnboarding.isMetaMaskInstalled()) {
       // Update account if the user switches accounts in MetaMask
-      window.ethereum.on('accountsChanged', accounts => this.setState({ accounts }))
+      window.ethereum.on('accountsChanged', (accounts) => {
+        this.setState({ accounts })
+        window.location.reload()
+      })
 
       // Reload the site if the user selects a different chain
       window.ethereum.on('chainChanged', (chainId) => {
@@ -117,6 +120,7 @@ export class OnboardingButton extends React.Component {
       this.connected = true
     }
     console.log('connected', this.connected)
+    console.log('connected', this.connected)
     if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
       // If MetaMask is not yet installed, ask the user to start the MetaMask onboarding process
       // (install the MetaMask browser extension).
@@ -140,8 +144,12 @@ export class OnboardingButton extends React.Component {
       )
     } else {
       return (
-        <div className='right'>
-          <button onClick={this.connectMetaMask}>Connect</button>
+        <div className='center'>
+          <p>*MetaMask Wallet not connected or you need to change your network.</p>
+          <p>Click connect or change your network to interact with the token and contracts</p>
+          <div className='right'>
+            <button onClick={this.connectMetaMask}>Connect</button>
+          </div>
         </div>
       )
     }
