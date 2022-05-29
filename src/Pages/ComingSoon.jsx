@@ -1,6 +1,5 @@
 import { Outlet, Link } from 'react-router-dom'
 import React from 'react'
-import '../App.css'
 // import backgroundVideo from '../file.mp4'
 
 export class ComingSoon extends React.Component {

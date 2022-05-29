@@ -1,6 +1,6 @@
 import { Outlet, Link } from 'react-router-dom'
 import React from 'react'
-import '../App.css'
+
 // import backgroundVideo from '../file.mp4'
 
 export class Home extends React.Component {
@@ -40,7 +40,7 @@ export class Home extends React.Component {
       <div>
         <h1>obscurityDAO</h1>
         <div>
-          <p>*obscurity will never ask for a nemonic or private key. Never send Ethereum directly to the token contract.* For more tips on security, visit https://ethereum.org/en/security The obscurity ecosystem - consisting of crypto currencies/tokens, NFT&apos;s and NFT marketplace, a Swap, and Play-to-Earn Gaming, will be launching in the coming months and years!</p>
+          <p>*obscurityDAO will never ask for a nemonic or private key. Never send Ethereum directly to the token contract.* For more tips on security, visit https://ethereum.org/en/security The obscurity ecosystem - consisting of crypto currencies/tokens, NFT&apos;s and NFT marketplace, a Swap, and Play-to-Earn Gaming, will be launching in the coming months and years!</p>
           <p>Our Mission: Through art and community build, grow and inspire one another to be their best self. Our open source token releases are community owned and driven. The (TBD: WELLS*) coin will be the governance token of the community, ownership of said future token will grant voting rights to token owners to determine the future direction of the network.</p>
           <ul id='coreValuesUL'>
             Core Values:

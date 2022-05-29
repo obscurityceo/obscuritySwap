@@ -5,7 +5,6 @@ import React from 'react'
 
 import { Outlet, Link } from 'react-router-dom'
 
-import '../App.css'
 // import backgroundVideo from '../file.mp4'
 
 // import ContractArtifact from '../contracts/obscurityDAO.sol/obscurityDAO.json'

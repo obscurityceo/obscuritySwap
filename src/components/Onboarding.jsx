@@ -120,7 +120,6 @@ export class OnboardingButton extends React.Component {
       this.connected = true
     }
     console.log('connected', this.connected)
-    console.log('connected', this.connected)
     if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
       // If MetaMask is not yet installed, ask the user to start the MetaMask onboarding process
       // (install the MetaMask browser extension).
@@ -133,7 +132,6 @@ export class OnboardingButton extends React.Component {
     if (isMainnet(this.state.chainId) && this.connected) {
       return (
         <div>
-          MetaMask Wallet connected to mainnet! Chain: {this.state.chainId} Account: {this.state.accounts[0]}
         </div>
       )
     } else if (isLocalhost(this.state.chainId) && this.connected) {

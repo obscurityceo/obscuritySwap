@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './componentCSS/desktop.css'
+import './componentCSS/tablet.css'
 import { ethers } from 'ethers'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { OnboardingButton } from '../components/Onboarding.jsx'
@@ -11,7 +11,7 @@ import { Home } from '../Pages/Home.jsx'
 import { BuyTokens } from '../Pages/BuyTokens.jsx'
 import { ComingSoon } from '../Pages/ComingSoon.jsx'
 import backgroundVideo from '../file.mp4'
-export class Desktop extends React.Component {
+export class Tablet extends React.Component {
   constructor (props) {
     super(props)
     this.provider = null

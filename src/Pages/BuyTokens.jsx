@@ -4,13 +4,14 @@ import { ethers } from 'ethers'
 
 import { Outlet, Link } from 'react-router-dom'
 
-import '../App.css'
 // import backgroundVideo from '../file.mp4'
 import { UpdateForm } from '../components/UpdateForm'
 import SaleArtifact from '../contracts/Crowdsale.sol/crowdsalePhaseZero.json'
 import ContractArtifact from '../contracts/obscurityDAO.sol/obscurityDAO.json'
 import { BuyTokensForm } from '../components/BuyTokensForm.jsx'
 import { SendTokensForm } from '../components/SendTokensForm.jsx'
+
+import MetaMaskOnboarding from '@metamask/onboarding'
 
 export class BuyTokens extends React.Component {
   constructor (props) {
@@ -44,7 +45,9 @@ export class BuyTokens extends React.Component {
   }
 
   componentDidMount () {
-    window.ethereum.on('accountsChanged', () => this.onConnected())
+    if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
+      window.ethereum.on('accountsChanged', () => this.onConnected())
+    }
   }
 
   componentWillUnmount () {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './componentCSS/desktop.css'
+import './componentCSS/mobile.css'
 import { ethers } from 'ethers'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { OnboardingButton } from '../components/Onboarding.jsx'
@@ -10,8 +10,8 @@ import { TokenContract } from '../Pages/TokenContract.jsx'
 import { Home } from '../Pages/Home.jsx'
 import { BuyTokens } from '../Pages/BuyTokens.jsx'
 import { ComingSoon } from '../Pages/ComingSoon.jsx'
-import backgroundVideo from '../file.mp4'
-export class Desktop extends React.Component {
+
+export class Mobile extends React.Component {
   constructor (props) {
     super(props)
     this.provider = null
@@ -40,27 +40,11 @@ export class Desktop extends React.Component {
 
   render () {
     return (
-    <div className="desktop">
+    <div className="mobile">
       <div id='belowHeader'>
         <OnboardingButton onConnected={this.onConnected}/>
       </div>
-      <video autoPlay loop muted style=
-      {
-        {
-          position: 'absolute',
-          left: '0',
-          top: '0',
-          height: '100%',
-          objectFit: 'cover',
-          transform: 'translate(-50%,',
-          zIndex: -1,
-          width: '100%',
-          filter: 'brightness(40%)'
-        }
-      }
-      >
-        <source src={backgroundVideo} type='video/mp4'/>
-      </video>
+
       <BrowserRouter>
        <Routes>
           <Route exact path='/' element={<Home/>} />
