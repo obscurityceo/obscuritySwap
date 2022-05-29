@@ -45,7 +45,7 @@ export class BuyTokens extends React.Component {
   }
 
   componentDidMount () {
-    if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
+    if (MetaMaskOnboarding.isMetaMaskInstalled()) {
       window.ethereum.on('accountsChanged', () => this.onConnected())
     }
   }
@@ -186,58 +186,87 @@ export class BuyTokens extends React.Component {
   }
 
   render () {
-    return (
-    <div className='BuyTokens'>
-      <>
-      <nav id='navigation'>
-        <ul id='navigationUL'>
-          <li id='navigationLI'>
-            <Link to="/">Home</Link>
+    if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
+      return (
+        <div className='BuyTokens'>
+        <>
+        <nav id='navigation'>
+          <ul id='navigationUL'>
+            <li id='navigationLI'>
+              <Link to="/">Home</Link>
+              </li>
+            <li id='navigationLI'>
+              <Link to="/CharityWallet">Charity Wallet</Link>
             </li>
-          <li id='navigationLI'>
-            <Link to="/CharityWallet">Charity Wallet</Link>
-          </li>
-          <li id='navigationLI'>
-            <Link to="/CompanyWallet">Company Wallet</Link>
-          </li>
-          <li id='navigationLI'>
-            <Link to="/TokenContract">Token Wallet</Link>
-          </li>
-          <li id='navigationLI'>
-            <Link to="/BuyTokens">Buy/Send Tokens</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <Outlet />
-      </>
-        <h1>obscurityDAO: Buy/Send Tokens</h1>
-        <div className='left'>
-          <UpdateForm
-            onConnected={this.onConnected}
-            _currentBalance={this.state.currentBalance}
-            _symbol={this.state.symbol}
-          />
+            <li id='navigationLI'>
+              <Link to="/CompanyWallet">Company Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/TokenContract">Token Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/BuyTokens">Buy/Send Tokens</Link>
+            </li>
+          </ul>
+        </nav>
+        <Outlet />
+        </>
+        <h2>Please install MetaMask</h2>
         </div>
-        <div className='center'>
-          <BuyTokensForm
-            _to={this.state.to}
-            _amount={this.state.amount}
-            aHandleTo={this.aHandleTo}
-            aHandleAmount={this.aHandleAmount}
-            submitBuy={this.submitBuy}
-          />
+      )
+    } else {
+      return (
+        <div className='BuyTokens'>
+          <>
+          <nav id='navigation'>
+            <ul id='navigationUL'>
+              <li id='navigationLI'>
+                <Link to="/">Home</Link>
+                </li>
+              <li id='navigationLI'>
+                <Link to="/CharityWallet">Charity Wallet</Link>
+              </li>
+              <li id='navigationLI'>
+                <Link to="/CompanyWallet">Company Wallet</Link>
+              </li>
+              <li id='navigationLI'>
+                <Link to="/TokenContract">Token Wallet</Link>
+              </li>
+              <li id='navigationLI'>
+                <Link to="/BuyTokens">Buy/Send Tokens</Link>
+              </li>
+            </ul>
+          </nav>
+          <Outlet />
+          </>
+            <h1>obscurityDAO: Buy/Send Tokens</h1>
+            <div className='left'>
+              <UpdateForm
+                onConnected={this.onConnected}
+                _currentBalance={this.state.currentBalance}
+                _symbol={this.state.symbol}
+              />
+            </div>
+            <div className='center'>
+              <BuyTokensForm
+                _to={this.state.to}
+                _amount={this.state.amount}
+                aHandleTo={this.aHandleTo}
+                aHandleAmount={this.aHandleAmount}
+                submitBuy={this.submitBuy}
+              />
+            </div>
+            <div className='center'>
+              <SendTokensForm
+                _sendTo={this.state.sendTo}
+                _sendAmount={this.state.sendAmount}
+                aHandleSendTo={this.aHandleSendTo}
+                aHandleSendAmount={this.aHandleSendAmount}
+                submitSend={this.submitSend}
+              />
+            </div>
         </div>
-        <div className='center'>
-          <SendTokensForm
-            _sendTo={this.state.sendTo}
-            _sendAmount={this.state.sendAmount}
-            aHandleSendTo={this.aHandleSendTo}
-            aHandleSendAmount={this.aHandleSendAmount}
-            submitSend={this.submitSend}
-          />
-        </div>
-    </div>
-    )
+      )
+    }
   }
 }
