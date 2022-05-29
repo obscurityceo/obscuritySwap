@@ -12,6 +12,8 @@ import { Outlet, Link } from 'react-router-dom'
 
 import ContractArtifact from '../contracts/obscurityDAO.sol/obscurityDAO.json'
 
+import MetaMaskOnboarding from '@metamask/onboarding'
+
 export class TokenContract extends React.Component {
   constructor (props) {
     super(props)
@@ -58,7 +60,9 @@ export class TokenContract extends React.Component {
   }
 
   componentDidMount () {
-    window.ethereum.on('accountsChanged', () => this.onConnected())
+    if (MetaMaskOnboarding.isMetaMaskInstalled()) {
+      window.ethereum.on('accountsChanged', () => this.onConnected())
+    }
   }
 
   componentWillUnmount () {
@@ -226,89 +230,119 @@ export class TokenContract extends React.Component {
   }
 
   render () {
-    return (
-    <div className='TokenContract'>
-      <>
-      <nav id='navigation'>
-        <ul id='navigationUL'>
-          <li id='navigationLI'>
-            <Link to="/">Home</Link>
-            </li>
-          <li id='navigationLI'>
-            <Link to="/CharityWallet">Charity Wallet</Link>
-          </li>
-          <li id='navigationLI'>
-            <Link to="/CompanyWallet">Company Wallet</Link>
-          </li>
-          <li id='navigationLI'>
-            <Link to="/TokenContract">Token Wallet</Link>
-          </li>
-          <li id='navigationLI'>
-            <Link to="/BuyTokens">Buy/Send Tokens</Link>
-          </li>
-        </ul>
+    if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
+      return (
+        <div className='BuyTokens'>
         <>
-      <nav id='subMenu'>
-        <ul id='subMenuUL'>
-          <li id='subMenuLI'>
-            <Link to="/FundProposal">Fund Proposals</Link>
-          </li>
-          <li id='subMenuLI'>
-            <Link to="/AddressProposal">Address Proposals</Link>
-          </li>
-        </ul>
-      </nav>
-      <Outlet />
-      </>
-      </nav>
-
-      <Outlet />
-      </>
-        <h1>obscurityDAO: Token Contract</h1>
-        <div className='left'>
-          <UpdateForm
-            onConnected={this.onConnected}
-            _currentBalance={this.state.currentBalance}
-            _symbol={this.state.symbol}
-          />
+        <nav id='navigation'>
+          <ul id='navigationUL'>
+            <li id='navigationLI'>
+              <Link to="/">Home</Link>
+              </li>
+            <li id='navigationLI'>
+              <Link to="/CharityWallet">Charity Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/CompanyWallet">Company Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/TokenContract">Token Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/BuyTokens">Buy/Send Tokens</Link>
+            </li>
+          </ul>
+        </nav>
+        <Outlet />
+        </>
+        <h2>Please install MetaMask</h2>
         </div>
-        <div>
+      )
+    } else {
+      return (
+      <div className='TokenContract'>
+        <>
+        <nav id='navigation'>
+          <ul id='navigationUL'>
+            <li id='navigationLI'>
+              <Link to="/">Home</Link>
+              </li>
+            <li id='navigationLI'>
+              <Link to="/CharityWallet">Charity Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/CompanyWallet">Company Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/TokenContract">Token Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/BuyTokens">Buy/Send Tokens</Link>
+            </li>
+          </ul>
+          <>
+        <nav id='subMenu'>
+          <ul id='subMenuUL'>
+            <li id='subMenuLI'>
+              <Link to="/FundProposal">Fund Proposals</Link>
+            </li>
+            <li id='subMenuLI'>
+              <Link to="/AddressProposal">Address Proposals</Link>
+            </li>
+          </ul>
+        </nav>
+        <Outlet />
+        </>
+        </nav>
+
+        <Outlet />
+        </>
+          <h1>obscurityDAO: Token Contract</h1>
+          <div className='left'>
+            <UpdateForm
+              onConnected={this.onConnected}
+              _currentBalance={this.state.currentBalance}
+              _symbol={this.state.symbol}
+            />
+          </div>
+          <div>
+            <div className='center'>
+              <TokenFundPropComplete
+                _HFCProposalID={this.state.HFCroposalID}
+                _HFFromAddr={this.state.HFFromAddr}
+                _HFToAddr={this.state.HFToAddr}
+                _HFAmount={this.state.HFAmount}
+                _HFDesc={this.state.HFDesc}
+                _HFVote={this.state.HFVote}
+                _HFMessage={this.state.HFMessage}
+                _HFNonce={this.state.HFNonce}
+                _HFSignature={this.state.HFSignature}
+
+                SubmitHFC={this.SubmitHFC}
+                SubmitHFV={this.SubmitHFV}
+                SubmitHFCR={this.SubmitHFCR}
+
+                aHFProposalID={this.aHFProposalID}
+                aHFFromAddr={this.aHFFromAddR}
+                aHFToAddr={this.aHFToAddr}
+                aHFAmount={this.aHFAmount}
+                aHFDesc={this.aHFDesc}
+                aHFVote={this.aHFVote}
+                aHFMessage={this.aHFMessage}
+                aHFNonce={this.aHFNonce}
+                aHFSignature={this.aHFSignature}
+              />
+            </div>
+          </div>
           <div className='center'>
-            <TokenFundPropComplete
-              _HFCProposalID={this.state.HFCroposalID}
-              _HFFromAddr={this.state.HFFromAddr}
-              _HFToAddr={this.state.HFToAddr}
-              _HFAmount={this.state.HFAmount}
-              _HFDesc={this.state.HFDesc}
-              _HFVote={this.state.HFVote}
-              _HFMessage={this.state.HFMessage}
-              _HFNonce={this.state.HFNonce}
-              _HFSignature={this.state.HFSignature}
-
-              SubmitHFC={this.SubmitHFC}
-              SubmitHFV={this.SubmitHFV}
-              SubmitHFCR={this.SubmitHFCR}
-
-              aHFProposalID={this.aHFProposalID}
-              aHFFromAddr={this.aHFFromAddR}
-              aHFToAddr={this.aHFToAddr}
-              aHFAmount={this.aHFAmount}
-              aHFDesc={this.aHFDesc}
-              aHFVote={this.aHFVote}
-              aHFMessage={this.aHFMessage}
-              aHFNonce={this.aHFNonce}
-              aHFSignature={this.aHFSignature}
+            <TokenAddrPropComplete
+              _HACProposalID={this.state.HACProposalID}
+              SubmitHAPC={this.SubmitHAC}
+              aHACProposalID={this.aHACProposalID}
             />
           </div>
         </div>
-        <div className='center'>
-          <TokenAddrPropComplete
-            _HACProposalID={this.state.HACProposalID}
-            SubmitHAPC={this.SubmitHAC}
-            aHACProposalID={this.aHACProposalID}
-          />
-        </div>
-      </div>
-    )
+      )
+    }
   }
 }

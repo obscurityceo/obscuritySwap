@@ -8,6 +8,8 @@ import { Outlet, Link } from 'react-router-dom'
 
 import ContractArtifact from '../contracts/obscurityDAO.sol/obscurityDAO.json'
 
+import MetaMaskOnboarding from '@metamask/onboarding'
+
 export class CharityWallet extends React.Component {
   constructor (props) {
     super(props)
@@ -22,7 +24,9 @@ export class CharityWallet extends React.Component {
   }
 
   componentDidMount () {
-    window.ethereum.on('accountsChanged', () => this.onConnected())
+    if (MetaMaskOnboarding.isMetaMaskInstalled()) {
+      window.ethereum.on('accountsChanged', () => this.onConnected())
+    }
   }
 
   async onConnected () {
@@ -52,34 +56,63 @@ export class CharityWallet extends React.Component {
   }
 
   render () {
-    return (
-    <div className='CharityWallet'>
-      <>
-      <nav id='navigation'>
-        <ul id='navigationUL'>
-          <li id='navigationLI'>
-            <Link to="/">Home</Link>
+    if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
+      return (
+        <div className='BuyTokens'>
+        <>
+        <nav id='navigation'>
+          <ul id='navigationUL'>
+            <li id='navigationLI'>
+              <Link to="/">Home</Link>
+              </li>
+            <li id='navigationLI'>
+              <Link to="/CharityWallet">Charity Wallet</Link>
             </li>
-          <li id='navigationLI'>
-            <Link to="/CharityWallet">Charity Wallet</Link>
-          </li>
-          <li id='navigationLI'>
-            <Link to="/CompanyWallet">Company Wallet</Link>
-          </li>
-          <li id='navigationLI'>
-            <Link to="/TokenContract">Token Wallet</Link>
-          </li>
-          <li id='navigationLI'>
-            <Link to="/BuyTokens">Buy/Send Tokens</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <Outlet />
-      </>
-        <h1>obscurityDAO</h1>
-        Charity Wallet: Coming Soon
-    </div>
-    )
+            <li id='navigationLI'>
+              <Link to="/CompanyWallet">Company Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/TokenContract">Token Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/BuyTokens">Buy/Send Tokens</Link>
+            </li>
+          </ul>
+        </nav>
+        <Outlet />
+        </>
+        <h2>Please install MetaMask</h2>
+        </div>
+      )
+    } else {
+      return (
+      <div className='CharityWallet'>
+        <>
+        <nav id='navigation'>
+          <ul id='navigationUL'>
+            <li id='navigationLI'>
+              <Link to="/">Home</Link>
+              </li>
+            <li id='navigationLI'>
+              <Link to="/CharityWallet">Charity Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/CompanyWallet">Company Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/TokenContract">Token Wallet</Link>
+            </li>
+            <li id='navigationLI'>
+              <Link to="/BuyTokens">Buy/Send Tokens</Link>
+            </li>
+          </ul>
+        </nav>
+        <Outlet />
+        </>
+          <h1>obscurityDAO</h1>
+          Charity Wallet: Coming Soon
+      </div>
+      )
+    }
   }
 }
