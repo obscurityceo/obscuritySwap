@@ -29,6 +29,12 @@ export class CharityWallet extends React.Component {
     }
   }
 
+  componentWillUnmount () {
+    if (MetaMaskOnboarding.isMetaMaskInstalled()) {
+      window.ethereum.removeListener('accountsChanged', () => this.onDisconnected())
+    }
+  }
+
   async onConnected () {
     if (this.provider === null) {
       this.provider = this.props.getProvider()

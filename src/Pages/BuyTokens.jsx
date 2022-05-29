@@ -51,7 +51,9 @@ export class BuyTokens extends React.Component {
   }
 
   componentWillUnmount () {
-    window.ethereum.removeListener('accountsChanged', () => this.onDisconnected())
+    if (MetaMaskOnboarding.isMetaMaskInstalled()) {
+      window.ethereum.removeListener('accountsChanged', () => this.onDisconnected())
+    }
   }
 
   async onDisconnected () {
